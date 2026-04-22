@@ -3,6 +3,12 @@ import api from "./index.js";
 // 取用產品列表
 export const getProducts = async () => {
     const response = await api.get('/products');
+    // 模擬loading...
+    await new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, 3000);
+    })
     return response.data;
 }
 
