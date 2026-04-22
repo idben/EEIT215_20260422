@@ -1,7 +1,7 @@
 import api from "./index.js";
 
 // 取用產品列表
-export const getProducts = async () => {
+export const getProducts = async (signal) => {
     const response = await api.get('/products');
     // 模擬loading...
     // await new Promise((resolve) => {
@@ -25,7 +25,7 @@ export const getCategories = async () => {
 }
 
 // 由分類取用產品列表
-export const getProductsByCategory = async (category) => {
+export const getProductsByCategory = async (category, signal) => {
     const response = await api.get(`/products/category/${category}`);
     return response.data;
 }

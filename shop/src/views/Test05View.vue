@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, onUnmounted, watch } from 'vue';
 import { getProducts, getProduct, getCategories, getProductsByCategory } from '@/api/product';
 
 const products = ref([]);
@@ -8,18 +8,30 @@ const categories = ref([]);
 const selectedCategory = ref('');
 const loading = ref(true);
 const error = ref(null);
+let controller = null;
 
 const fetchProducts = async () => {
+    // 取消上一個未完成的請求
+    if (controller) {
+        controller.abort();
+    }
+
+    // 建立新的 AbortController
+    controller = new AbortController();
+    const signal = controller.signal;
+
     loading.value = true;
+    // try: 發送請求 (帶 signal)
     try {
         // 有可能會有錯誤的放在 try
         if (selectedCategory.value) {
-            products.value = await getProductsByCategory(selectedCategory.value)
+            products.value = await getProductsByCategory(selectedCategory.value, signal)
         } else {
-            products.value = await getProducts();
+            products.value = await getProducts(signal);
         }
     } catch (err) {
         // 補獲錯誤
+        // catch: 判斷是不是取消造成的錯誤
         error.value = err.message || "載入失敗";
     } finally {
         // 最後一定會觸發的區域
@@ -50,6 +62,10 @@ watch(selectedCategory, () => {
 onMounted(() => {
     fetchProducts();
     fetchCategories();
+})
+
+onUnmounted(() => {
+    if (controller) controller.abort();
 })
 </script>
 <template>
