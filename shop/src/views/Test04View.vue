@@ -48,8 +48,19 @@ onMounted(() => {
         <div v-else class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6- g-2">
             <div class="col" v-for="product in products" :key="product.id" @click="fetchProduct(product.id)"
                 data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <div class="h200px">
-                    <div class="card bg-info h-100">1</div>
+                <div class="h400px">
+                    <div class="card h-100">
+                        <img :src="product.image" class="h200px card-img-top object-fit-contain" alt="">
+                        <div class="card-body">
+                            <div>{{ product.title }}</div>
+
+                        </div>
+                        <div class="card-footer d-flex align-items-center">
+                            <div class="price">$ {{ product.price }}</div>
+                            <button class="btn btn-primary ms-auto">加入購物車</button>
+                        </div>
+                        <div class="badge text-light bg-success position-absolute st1">{{ product.category }}</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -99,5 +110,14 @@ li img {
 
 .h200px {
     height: 200px;
+}
+
+.h400px {
+    height: 400px;
+}
+
+.st1 {
+    left: 5px;
+    top: 5px;
 }
 </style>
