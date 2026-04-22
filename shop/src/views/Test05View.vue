@@ -48,12 +48,18 @@ onMounted(() => {
 </script>
 <template>
     <div>
-        <h1>商品卡片列表(篩選)</h1>
-        <!-- 分類下拉選單 -->
-        <select v-model="selectedCategory" class="form-select">
-            <option value="">全部</option>
-            <option v-for="category in categories" :key="category" :value="category">{{ category }}</option>
-        </select>
+        <div class="d-flex">
+            <h1>商品卡片列表(篩選)</h1>
+            <!-- 分類下拉選單 -->
+            <div class="ms-auto">
+                <select v-model="selectedCategory" class="form-select">
+                    <option value="">全部</option>
+                    <option v-for="category in categories" :key="category" :value="category">{{ category }}</option>
+                </select>
+            </div>
+
+        </div>
+
         <!-- 載入中 -->
         <div v-if="loading" class="text-center py-5">載入中...</div>
 
