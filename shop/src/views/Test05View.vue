@@ -28,13 +28,19 @@ const fetchProducts = async () => {
 }
 
 const fetchProduct = async (id) => {
-    product.value = await getProduct(id);
-    console.log(product.value);
+    try {
+        product.value = await getProduct(id);
+    } catch (err) {
+        error.value = err.message || "載入失敗";
+    }
 }
 
 const fetchCategories = async () => {
-    categories.value = await getCategories();
-    console.log(categories.value);
+    try {
+        categories.value = await getCategories();
+    } catch (err) {
+        error.value = err.message || "載入失敗";
+    }
 }
 
 watch(selectedCategory, () => {
