@@ -120,4 +120,10 @@ li img {
     left: 5px;
     top: 5px;
 }
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 </style>
