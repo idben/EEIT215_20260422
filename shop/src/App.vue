@@ -8,6 +8,9 @@ import { RouterView, RouterLink } from 'vue-router';
         <li class="nav-item">
           <RouterLink class="nav-link" to="/about">about</RouterLink>
         </li>
+        <li class="nav-item">
+          <RouterLink class="nav-link" to="/mount">mount</RouterLink>
+        </li>
       </ul>
     </nav>
     <main>
