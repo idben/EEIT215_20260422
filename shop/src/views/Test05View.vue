@@ -41,8 +41,9 @@ onMounted(() => {
 <template>
     <div>
         <h1>商品卡片列表(篩選)</h1>
+        {{ selectedCategory }}
         <!-- 分類下拉選單 -->
-        <select class="form-select">
+        <select v-model="selectedCategory" class="form-select">
             <option value="">全部</option>
             <option v-for="category in categories" :key="category" :value="category">{{ category }}</option>
         </select>
