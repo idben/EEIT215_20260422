@@ -20,8 +20,11 @@ import { RouterView, RouterLink } from 'vue-router';
         <li class="nav-item">
           <RouterLink class="nav-link" to="/grid2">格狀系統</RouterLink>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <RouterLink class="nav-link" to="/grid3">分類選單</RouterLink>
+        </li> -->
+        <li class="nav-item">
+          <RouterLink class="nav-link" to="/grid4">載入動畫</RouterLink>
         </li>
       </ul>
     </nav>

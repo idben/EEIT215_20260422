@@ -4,11 +4,11 @@ import api from "./index.js";
 export const getProducts = async (signal) => {
     const response = await api.get('/products');
     // 模擬loading...
-    // await new Promise((resolve) => {
-    //     setTimeout(() => {
-    //         resolve();
-    //     }, 3000);
-    // })
+    await new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, 3000);
+    })
     return response.data;
 }
 

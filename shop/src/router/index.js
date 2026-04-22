@@ -45,6 +45,11 @@ const router = createRouter({
       name: 'grid3',
       component: () => import('../views/Test05View.vue'),
     },
+    {
+      path: '/grid4',
+      name: 'grid4',
+      component: () => import('../views/Test06View.vue'),
+    },
   ],
 })
 
