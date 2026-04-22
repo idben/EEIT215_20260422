@@ -11,7 +11,6 @@ const fetchProducts = async () => {
 
 const fetchProduct = async (id) => {
     product.value = await getProduct(id);
-    console.log(product.value);
 }
 
 onMounted(() => {
@@ -21,11 +20,9 @@ onMounted(() => {
 <template>
     <div>
         <h1>商品列表</h1>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Launch demo modal
-        </button>
         <ul>
-            <li v-for="product in products" :key="product.id" @click="fetchProduct(product.id)">
+            <li v-for="product in products" :key="product.id" @click="fetchProduct(product.id)" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
                 <img :src="product.image" alt="">
                 <br>
                 {{ product.title }} - {{ product.price }}
@@ -34,14 +31,14 @@ onMounted(() => {
     </div>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <img class="img-fluid" :src="product.image" alt="">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -53,7 +50,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-img {
+li img {
     width: 100px;
     height: 100px;
     object-fit: contain;
