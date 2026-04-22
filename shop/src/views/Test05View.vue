@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { getProducts, getProduct, getCategories, getProductsByCategory } from '@/api/product';
 
 const products = ref([]);
@@ -13,7 +13,11 @@ const fetchProducts = async () => {
     loading.value = true;
     try {
         // 有可能會有錯誤的放在 try
-        products.value = await getProducts();
+        if (selectedCategory.value) {
+            products.value = await getProductsByCategory(selectedCategory.value)
+        } else {
+            products.value = await getProducts();
+        }
     } catch (err) {
         // 補獲錯誤
         error.value = err.message || "載入失敗";
@@ -33,6 +37,10 @@ const fetchCategories = async () => {
     console.log(categories.value);
 }
 
+watch(selectedCategory, () => {
+    fetchProducts();
+});
+
 onMounted(() => {
     fetchProducts();
     fetchCategories();
@@ -41,7 +49,6 @@ onMounted(() => {
 <template>
     <div>
         <h1>商品卡片列表(篩選)</h1>
-        {{ selectedCategory }}
         <!-- 分類下拉選單 -->
         <select v-model="selectedCategory" class="form-select">
             <option value="">全部</option>
