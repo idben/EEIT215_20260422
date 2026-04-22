@@ -3,9 +3,15 @@ import { ref, onMounted } from 'vue';
 import { getProducts, getProduct } from '@/api/product';
 
 const products = ref([]);
+const product = ref([]);
 
 const fetchProducts = async () => {
     products.value = await getProducts();
+}
+
+const fetchProduct = async (id) => {
+    product.value = await getProduct(id);
+    console.log(product.value);
 }
 
 onMounted(() => {
@@ -19,7 +25,7 @@ onMounted(() => {
             Launch demo modal
         </button>
         <ul>
-            <li v-for="product in products" :key="product.id">
+            <li v-for="product in products" :key="product.id" @click="fetchProduct(product.id)">
                 <img :src="product.image" alt="">
                 <br>
                 {{ product.title }} - {{ product.price }}
@@ -28,7 +34,7 @@ onMounted(() => {
     </div>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-fullscreen">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
