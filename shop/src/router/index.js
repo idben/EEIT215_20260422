@@ -30,6 +30,11 @@ const router = createRouter({
       name: 'axios2',
       component: () => import('../views/Test03View.vue'),
     },
+    {
+      path: '/grid',
+      name: 'grid',
+      component: () => import('../views/TestGridView.vue'),
+    },
   ],
 })
 
