@@ -25,6 +25,11 @@ const router = createRouter({
       name: 'axios',
       component: () => import('../views/Test02View.vue'),
     },
+    {
+      path: '/axios2',
+      name: 'axios2',
+      component: () => import('../views/Test03View.vue'),
+    },
   ],
 })
 
