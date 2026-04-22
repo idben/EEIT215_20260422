@@ -44,7 +44,7 @@ onMounted(() => {
         <!-- 分類下拉選單 -->
         <select class="form-select">
             <option value="">全部</option>
-            <option value="xxx">xxx</option>
+            <option v-for="category in categories" :key="category" :value="category">{{ category }}</option>
         </select>
         <!-- 載入中 -->
         <div v-if="loading" class="text-center py-5">載入中...</div>
