@@ -18,7 +18,7 @@ import { RouterView, RouterLink } from 'vue-router';
           <RouterLink class="nav-link" to="/axios2">axios2</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/grid">格狀系統</RouterLink>
+          <RouterLink class="nav-link" to="/grid2">格狀系統</RouterLink>
         </li>
       </ul>
     </nav>

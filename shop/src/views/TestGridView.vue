@@ -4,7 +4,9 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6- g-2">
         <!-- .col*12>.h200px.bg-info>{$} -->
         <div class="col">
-            <div class="h200px bg-info">1</div>
+            <div class="h200px ">
+                <div class="card bg-info h-100">1</div>
+            </div>
         </div>
         <div class="col">
             <div class="h200px bg-info">2</div>
