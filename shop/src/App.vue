@@ -11,6 +11,9 @@ import { RouterView, RouterLink } from 'vue-router';
         <li class="nav-item">
           <RouterLink class="nav-link" to="/mount">mount</RouterLink>
         </li>
+        <li class="nav-item">
+          <RouterLink class="nav-link" to="/axios">axios</RouterLink>
+        </li>
       </ul>
     </nav>
     <main>
